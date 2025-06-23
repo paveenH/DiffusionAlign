@@ -2,7 +2,6 @@ from typing import List, Dict
 
 import os
 import torch
-import argparse
 import numpy as np
 import transformers
 
@@ -189,36 +188,30 @@ def localize(model_id: str,
     return language_mask
 
 if  __name__ == "__main__":
-
-    parser = argparse.ArgumentParser(description="Localize Units in LLMs")
-    parser.add_argument("--model-name", type=str, required=True, help="huggingface model name")
-    parser.add_argument("--percentage", type=float, default=None, help="percentage of units to localize")
-    parser.add_argument("--localize-range", type=str, default="100-100", help="percentile in which to localize, 100-100 and 0-0 indicate top and least selective units respectively")
-    parser.add_argument("--network", type=str, default="language", help="network to localize")
-    parser.add_argument("--pooling", type=str, default="last-token", choices=["last-token", "mean"], help="token aggregation method")
-    parser.add_argument("--num-units", type=int, default=None, help="number of units to localize, percentage overrides it")
-    parser.add_argument("--seed", type=int, default=42, help="random seed")
-    parser.add_argument("--device", type=str, default=None, help="device to use")
-    parser.add_argument("--untrained", action="store_true", help="use an untrained version of the model")
-    parser.add_argument("--overwrite", action="store_true", help="overwrite current mask if cached")
-    args = parser.parse_args()
-
-    assert args.percentage or args.num_units, "You must either provide percentage of units to localize or number of units"
-    assert args.network in {"language", "theory-of-mind", "multiple-demand"}, "Unsupported network"
-
-    model_name = args.model_name
-    pretrained = not args.untrained
-    localize_range = args.localize_range
-    num_units = args.num_units
-    percentage = args.percentage
-    pooling = args.pooling
-    network = args.network
-    seed = args.seed
+      
+    model_name = "meta-llama/Llama-3.1-8B-Instruct"
+    pretrained = True
+    localize_range = 100-100
+    num_units = None
+    percentage = 1
+    pooling = "last-token"
+    network = "language"
+    seed = 42
     batch_size = 1
-    device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu") if args.device is None else args.device
+    overwrite = "store_true"
+    device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 
+    assert percentage or num_units, "You must either provide percentage of units to localize or number of units"
+    assert network in {"language", "theory-of-mind", "multiple-demand"}, "Unsupported network"
+    
     if pretrained:
         model = transformers.AutoModelForCausalLM.from_pretrained(model_name)
+        model = transformers.AutoModelForCausalLM.from_pretrained(
+            model_name,
+            torch_dtype=torch.float16,
+            device_map="auto"
+        )
+    
     else:
         model_config = transformers.AutoConfig.from_pretrained(model_name)
         model = transformers.AutoModelForCausalLM.from_config(config=model_config)
@@ -248,5 +241,5 @@ if  __name__ == "__main__":
         device=device,
         localize_range=localize_range,
         pretrained=pretrained,
-        overwrite=args.overwrite,
+        overwrite=overwrite,
     )
