@@ -1,8 +1,8 @@
 
 model_name_map = {
     "meta-llama/Llama-3.1-8B-Instruct": "LLaMA-3.1-8B-Instruct",
-    "meta-llama/Llama-3.2-3B-Instruct":    "LLaMA-3.2-3B-Instruct",
-    "meta-llama/Llama-3.2-1B-Instruct":    "LLaMA-3.2-1B-Instruct",
+    "meta-llama/Llama-3.2-3B-Instruct": "LLaMA-3.2-3B-Instruct",
+    "meta-llama/Llama-3.2-1B-Instruct": "LLaMA-3.2-1B-Instruct",
     "mistralai/Mistral-7B-Instruct-v0.3": "Mistral-7B-Instruct-v0.3",
 }
 
