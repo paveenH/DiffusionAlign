@@ -10,7 +10,7 @@ def get_num_blocks(model_name):
     return {
         "Llama-3.1-8B-Instruct":       32,
         "Llama-3.2-3B-Instruct":       28,  
-        "Llama-3.2-1B-Instruct":       20, 
+        "Llama-3.2-1B-Instruct":       16, 
         "Mistral-7B-Instruct-v0.3":    32,
     }[model_name]
 
