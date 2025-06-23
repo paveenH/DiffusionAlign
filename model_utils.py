@@ -1,19 +1,25 @@
 
 model_name_map = {
     "meta-llama/Llama-3.1-8B-Instruct": "LLaMA-3.1-8B-Instruct",
-    "mistralai/Mistral-7B-Instruct-v0.3": "Mistral-7B-Instruct",
+    "meta-llama/Llama-3.2-3B-Instruct":    "LLaMA-3.2-3B-Instruct",
+    "meta-llama/Llama-3.2-1B-Instruct":    "LLaMA-3.2-1B-Instruct",
+    "mistralai/Mistral-7B-Instruct-v0.3": "Mistral-7B-Instruct-v0.3",
 }
 
 def get_num_blocks(model_name):
     return {
-        "Llama-3.1-8B-Instruct":        32,
-        "Mistral-7B-Instruct-v0.3":     32,
+        "Llama-3.1-8B-Instruct":       32,
+        "LLaMA-3.2-3B-Instruct":       28,  
+        "LLaMA-3.2-1B-Instruct":       20, 
+        "Mistral-7B-Instruct-v0.3":    32,
     }[model_name]
 
 def get_hidden_dim(model_name):
     return {
-        "Llama-3.1-8B-Instruct":        4096,
-        "Mistral-7B-Instruct-v0.3":     4096,
+        "Llama-3.1-8B-Instruct":       4096,
+        "LLaMA-3.2-3B-Instruct":       3072,
+        "LLaMA-3.2-1B-Instruct":       2048,
+        "Mistral-7B-Instruct-v0.3":    4096,
     }[model_name]
 
 
