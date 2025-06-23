@@ -189,7 +189,7 @@ def localize(model_id: str,
 
 if  __name__ == "__main__":
       
-    model_name = "meta-llama/Llama-3.2-1B-Instruct"
+    model_name = "meta-llama/Llama-3.1-8B-Instruct"
     pretrained = True
     localize_range = "100-100"
     num_units = None
