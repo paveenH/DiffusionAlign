@@ -67,12 +67,6 @@ def extract_representations(
 
     # Get the activations of the model on the dataset
     langloc_dataloader = DataLoader(loc_dataset, batch_size=batch_size, num_workers=0)
-
-    print(f"> Using Device: {device}")
-
-    model.eval()
-    model.to(device)
-
     final_layer_representations = {
         "positive": {layer_name: np.zeros((len(loc_dataset.positive), hidden_dim)) for layer_name in layer_names},
         "negative": {layer_name: np.zeros((len(loc_dataset.negative), hidden_dim)) for layer_name in layer_names}
