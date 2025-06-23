@@ -46,14 +46,6 @@ def extract_batch(
 
     return batch_activations
 
-###
-# {
-#   'model.layers.0': [Tensor(4096), ..., Tensor(4096)],
-#   'model.layers.1': [Tensor(4096), ..., Tensor(4096)],
-#   'model.layers.2': [Tensor(4096), ..., Tensor(4096)],
-# }
-###
-
 def extract_representations(
     network: str,
     pooling: str,
