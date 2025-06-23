@@ -1,7 +1,3 @@
-model_name_map = {
-    "meta-llama/Llama-3.1-8B-Instruct": "LLaMA-3.1-8B-Instruct",
-    "mistralai/Mistral-7B-Instruct-v0.3": "Mistral-7B-Instruct",
-}
 
 def get_num_blocks(model_name):
     return {
