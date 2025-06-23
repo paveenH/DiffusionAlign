@@ -191,7 +191,7 @@ if  __name__ == "__main__":
       
     model_name = "meta-llama/Llama-3.1-8B-Instruct"
     pretrained = True
-    localize_range = 100-100
+    localize_range = "100-100"
     num_units = None
     percentage = 1
     pooling = "last-token"
