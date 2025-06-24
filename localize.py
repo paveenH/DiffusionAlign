@@ -14,9 +14,6 @@ from model_utils import get_layer_names, get_hidden_dim
 from utils import setup_hooks
 from datasets import LangLocDataset, TOMLocDataset, MDLocDataset
 
-# To cache the language mask
-CACHE_DIR = os.environ.get("LOC_CACHE", f"cache")
-
 def extract_batch(
     model: torch.nn.Module, 
     input_ids: torch.Tensor, 
