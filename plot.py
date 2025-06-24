@@ -8,8 +8,8 @@ from model_utils import model_name_map, get_num_blocks, get_hidden_dim
 
 percentage = 1
 threshold = 0.05
-network = "language" #"theory-of-mind"
-model_name = "Llama-3.1-8B-Instruct"
+network = "multiple-demand" #"theory-of-mind"
+model_name = "Llama-3.2-3B-Instruct"
 
 plot_data = {"selectivity": [], "layer_num": [], "model_name": []}  
 
