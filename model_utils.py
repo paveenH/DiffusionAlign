@@ -18,6 +18,7 @@ model_name_map = {
     "falcon-7b-instruct": "Falcon-7B-Instruct",
     "Mistral-7B-Instruct-v0.3": "Mistral-7B-Instruct",
     "Mistral-7B-v0.3": "Mistral-7B",
+    "Qwen2.5-0.5B-Instruct": "Qwen2.5-0.5B-Instruct",
 }
 
 def get_num_blocks(model_name):
@@ -51,6 +52,8 @@ def get_num_blocks(model_name):
         "gemma-1.1-2b-it": 18,
         "gemma-7b": 28,
         "gemma-1.1-7b-it": 28,
+        
+        "Qwen2.5-0.5B-Instruct": 24,
     }[model_name]
 
 def get_hidden_dim(model_name):
@@ -86,6 +89,8 @@ def get_hidden_dim(model_name):
 
         "Mistral-7B-v0.3": 4096,
         "Mistral-7B-Instruct-v0.3": 4096,
+        
+        "Qwen2.5-0.5B-Instruct": 896,
     }[model_name]
 
 
@@ -97,7 +102,7 @@ def get_layer_names(model_name):
             for block in range(num_blocks) 
             # for layer_desc in ['ln_1', 'attn', 'ln_2', 'mlp']
         ]
-    elif "Llama" in model_name or "gemma" in model_name or "Phi" in model_name or "Mistral" in model_name:
+    elif "Llama" in model_name or "gemma" in model_name or "Phi" in model_name or "Mistral" in model_name or "Qwen" in model_name:
         return [f'model.layers.{layer_num}' 
             for layer_num in range(num_blocks) 
             # for layer_desc in ["input_layernorm", "self_attn", "post_attention_layernorm", "mlp"]
