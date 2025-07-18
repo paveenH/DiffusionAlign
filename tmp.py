@@ -14,6 +14,6 @@ print(f"Number of layers: {len(m.model.layers)}")
 for i, layer in enumerate(m.model.layers):
     print(f"Layer {i}: {layer.__class__.__name__}")
     
-for name, module in m.named_modules():
-    if name.startswith("model.layers."):
-        print(name)
+# for name, module in m.named_modules():
+#     if name.startswith("model.layers."):
+#         print(name)
